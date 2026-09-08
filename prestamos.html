@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>SistemaBiblioteca - Préstamos</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f4f1ea; margin: 0; padding: 0;">
+
+<nav style="background-color: #2c3e50; padding: 15px; text-align: center;">
+  <a href="index.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: bold;">Inicio</a>
+  <a href="prestamos.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: bold;">Préstamos</a>
+</nav>
+
+<div style="padding: 30px; text-align: center;">
+  <h1 style="color: #2c3e50;">Gestión de Préstamos</h1>
+  <p style="font-size: 16px; color: #333;">Presiona el botón para registrar un nuevo préstamo.</p>
+
+  <button onclick="registrarPrestamo()" style="padding: 10px 20px; font-size: 16px; background-color: #2c3e50; color: white; border: none; border-radius: 5px; cursor: pointer;">Registrar préstamo</button>
+
+  <div id="listaPrestamos" style="margin-top: 20px; text-align: left; max-width: 400px; margin-left: auto; margin-right: auto;"></div>
+</div>
+
+<script>
+var prestamos = [];
+
+function registrarPrestamo() {
+  var libro = prompt("Nombre del libro:");
+  var usuario = prompt("Nombre del usuario:");
+
+  if (libro && usuario) {
+    var prestamo = libro + " prestado a " + usuario;
+    prestamos.push(prestamo);
+    mostrarPrestamos();
+  }
+}
+
+function mostrarPrestamos() {
+  var contenedor = document.getElementById("listaPrestamos");
+  contenedor.innerHTML = "<h3>Préstamos registrados:</h3>";
+
+  var i = 0;
+  while (i < prestamos.length) {
+    contenedor.innerHTML += "<p>" + prestamos[i] + "</p>";
+    i++;
+  }
+}
+</script>
+
+</body>
+</html>
